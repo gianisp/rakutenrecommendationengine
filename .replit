@@ -1,4 +1,5 @@
-entrypoint = "main.py"
+run = "pip install -r requirements.txt -v && streamlit run streamlit_app.py --server.port 8080 --server.address 0.0.0.0 --logger.level=debug"
+entrypoint = "streamlit_app.py"
 modules = ["python-3.11"]
 
 [nix]
@@ -8,7 +9,7 @@ channel = "stable-23_05"
 language = "python3"
 
 [gitHubImport]
-requiredFiles = [".replit", "replit.nix"]
+requiredFiles = [".replit", "replit.nix", "requirements.txt"]
 
 [deployment]
 deploymentTarget = "static"
@@ -17,3 +18,6 @@ publicDir = "./"
 [[ports]]
 localPort = 8080
 externalPort = 80
+
+[env]
+PYTHON_VERSION = "3.11"
